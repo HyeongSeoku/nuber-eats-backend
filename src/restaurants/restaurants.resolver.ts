@@ -16,7 +16,8 @@ export class RestaurantsResolver {
 
   @Mutation((returns) => Boolean)
   async createRestaurant(
-    @Args() createRestaurantDto: CreateRestaurantDto,
+    //dto type이 InputType 이므로 @Args('input')
+    @Args('input') createRestaurantDto: CreateRestaurantDto,
   ): Promise<boolean> {
     try {
       await this.restaurantService.createRestaurant(createRestaurantDto); //async 와 Promise필요
