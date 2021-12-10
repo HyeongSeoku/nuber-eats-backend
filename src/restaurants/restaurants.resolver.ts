@@ -21,6 +21,7 @@ export class RestaurantsResolver {
   ): Promise<boolean> {
     try {
       await this.restaurantService.createRestaurant(createRestaurantDto); //async 와 Promise필요
+      console.log(createRestaurantDto);
       return true;
     } catch (e) {
       console.log(e);
