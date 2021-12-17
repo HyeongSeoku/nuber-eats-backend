@@ -1,6 +1,7 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { BooleanValueNode } from 'graphql';
 import { CreateRestaurantDto } from './dtos/create-restauarnt.dto';
+import { UpdateRestaruantDto } from './dtos/updaet-restaurant.dto';
 import { Restaurant } from './entities/restaurant.entity';
 import { RestaurantService } from './restaurants.service';
 //Query nestjs/graphql 인지 꼭 확인
@@ -27,5 +28,14 @@ export class RestaurantsResolver {
       console.log(e);
       return false;
     }
+  }
+
+  //update하는 Mutation
+  @Mutation(() => Boolean)
+  //ArgsType 쓰면 @Args() 괄호안에 아무것도 안넣어줘도 됨
+  async updateRestaurant(
+    @Args('input') updateRestaruantDto: UpdateRestaruantDto,
+  ) {
+    return true;
   }
 }
