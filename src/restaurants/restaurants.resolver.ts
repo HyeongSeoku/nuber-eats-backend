@@ -35,7 +35,14 @@ export class RestaurantsResolver {
   //ArgsType 쓰면 @Args() 괄호안에 아무것도 안넣어줘도 됨
   async updateRestaurant(
     @Args('input') updateRestaruantDto: UpdateRestaruantDto,
-  ) {
-    return true;
+  ): Promise<boolean> {
+    try {
+      await this.restaurantService.updateRestaurant(updateRestaruantDto);
+      console.log('완료', updateRestaruantDto);
+      return true;
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
   }
 }
