@@ -5,6 +5,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import * as Joi from 'joi';
 import { Restaurant } from './restaurants/entities/restaurant.entity';
 import { RestaurantsModule } from './restaurants/restaurants.module';
+import { UsersModule } from './users/users.module';
+import { CommonModule } from './common/common.module';
+import { User } from './users/user.entity';
 
 console.log(Joi);
 
@@ -34,13 +37,14 @@ console.log(Joi);
       database: process.env.DB_NAME,
       synchronize: process.env.NODE_EV !== 'prod', //production에서는 실제 데이터를 가지고 있기 때문에 prod일 경우 초기화 x
       logging: true,
-      entities: [Restaurant],
+      entities: [User],
     }),
     //GraphQL을 루트로 설정
     GraphQLModule.forRoot({
       autoSchemaFile: true,
     }),
-    RestaurantsModule,
+    UsersModule,
+    CommonModule,
   ],
   controllers: [],
   providers: [],
