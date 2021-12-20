@@ -1,7 +1,7 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { BooleanValueNode } from 'graphql';
 import { CreateRestaurantDto } from './dtos/create-restauarnt.dto';
-import { UpdateRestaruantDto } from './dtos/updaet-restaurant.dto';
+import { UpdateRestaruantDto } from './dtos/update-restaurant.dto';
 import { Restaurant } from './entities/restaurant.entity';
 import { RestaurantService } from './restaurants.service';
 //Query nestjs/graphql 인지 꼭 확인
